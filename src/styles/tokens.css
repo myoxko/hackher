@@ -1,0 +1,26 @@
+:root{
+    /* Base */
+    --bg:#0b0e12;              /* 거의 블랙 */
+    --ink:#ffffff;             /* 화이트 */
+    --muted:#9aa7b5;
+  
+    /* Brand Neons (무드보드) */
+    --neon-pink:#ff00b8;
+    --neon-green:#00ff66;
+    --neon-yellow:#f5ff00;
+    --signal-red:#e53918;
+  
+    /* Surfaces */
+    --panel:#0f141a;
+    --panel-2:#0b1016;
+  
+    /* Accent 기본값(필요시 바꿔치기) */
+    --accent: var(--neon-green);
+  }
+  
+  @font-face {
+    font-family: "M42";
+    src: url("/fonts/M42.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
