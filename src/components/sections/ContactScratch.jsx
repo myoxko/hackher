@@ -4,7 +4,8 @@ export default function ContactScratch() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current; if (!canvas) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
 
     const paintCover = () => {
@@ -13,18 +14,22 @@ export default function ContactScratch() {
       const g = ctx.createLinearGradient(0, 0, w, h);
       g.addColorStop(0, "rgba(7,12,18,.88)");
       g.addColorStop(1, "rgba(5,8,12,.92)");
-      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
       // 네온 안내
       ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--neon-yellow") || "#f5ff00";
       ctx.font = "800 20px var(--font-grotesk)";
-      ctx.shadowColor = "rgba(245,255,0,.35)"; ctx.shadowBlur = 12;
+      ctx.shadowColor = "rgba(245,255,0,.35)";
+      ctx.shadowBlur = 12;
       ctx.fillText("SCRATCH TO REVEAL →", 22, 42);
       ctx.shadowBlur = 0;
     };
 
     const revealAt = (x, y) => {
       ctx.globalCompositeOperation = "destination-out";
-      ctx.beginPath(); ctx.arc(x, y, 28, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath();
+      ctx.arc(x, y, 28, 0, Math.PI * 2);
+      ctx.fill();
       ctx.globalCompositeOperation = "source-over";
     };
 
@@ -54,10 +59,24 @@ export default function ContactScratch() {
   }, []);
 
   return (
-    <section id="contact" className="min-h-svh px-6 py-16 flex flex-col justify-center gap-6">
-      <header>
-        <h2 className="text-2xl font-extrabold" style={{ color: "var(--neon-pink)" }}>WANTED PROFILE // 05</h2>
-        <p className="text-sky-300/70">긁어서 최종 정보를 드러내세요.</p>
+    <section
+      id="contact"
+      className="min-h-svh px-6 py-16 flex flex-col justify-center gap-6 bg-[#1a0507]"
+    >
+      {/* 제목 */}
+      <header className="flex justify-between items-center w-full max-w-[1040px] mx-auto">
+        <div className="puzzle-chip-left font-mono-accent">
+          <span className="chip-dot chip-dot--red" />
+          <span className="chip-dot chip-dot--yellow" />
+          <span className="chip-dot chip-dot--green" />
+          <span className="chip-label">CONTACT SCRATCH</span>
+        </div>
+        <div className="puzzle-chip-right font-mono-accent">
+          <span className="chip-tag">LEVEL END</span>
+          <span className="chip-tag chip-tag--armed">
+            CONTACT
+          </span>
+        </div>
       </header>
 
       <div className="relative mx-auto w-full max-w-3xl">
@@ -72,8 +91,13 @@ export default function ContactScratch() {
             <p>@myoxko</p>
           </div>
         </div>
+
         {/* 긁을 오버레이 */}
-        <canvas ref={canvasRef} className="relative z-10 block w-full rounded-2xl border border-white/10" height={340} />
+        <canvas
+          ref={canvasRef}
+          className="relative z-10 block w-full rounded-2xl border border-white/10"
+          height={340}
+        />
       </div>
     </section>
   );

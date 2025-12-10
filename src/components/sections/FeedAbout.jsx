@@ -27,19 +27,30 @@ export default function FeedAbout() {
   return (
     <section
       id="about"
-      className="min-h-screen px-6 py-16 flex flex-col justify-center gap-0 overflow-hidden bg-[#1a0507]"
+      className="min-h-screen px-6 py-16 flex flex-col justify-center gap-6 overflow-hidden bg-[#1a0507]"
     >
-      <header>
-        <h2 className="text-2xl font-extrabold text-red-500">PROFILE FEED // 03</h2>
-        <p className="text-gray-300/70">Decrypted feeds are streamed below.</p>
+      {/* 제목 */}
+      <header className="flex justify-between items-center w-full max-w-[1040px] mx-auto">
+        <div className="puzzle-chip-left font-mono-accent">
+          <span className="chip-dot chip-dot--red" />
+          <span className="chip-dot chip-dot--yellow" />
+          <span className="chip-dot chip-dot--green" />
+          <span className="chip-label">PROFILE FEED</span>
+        </div>
+        <div className="puzzle-chip-right font-mono-accent">
+          <span className="chip-tag">LEVEL 03</span>
+          <span className="chip-tag chip-tag--armed">
+            ACCESS GRANTED
+          </span>
+        </div>
       </header>
 
       {/* 이미지 나열, 이미지 간 간격을 0으로 설정 */}
-      <div className="flex flex-col items-center gap-0">
+      <div className="relative flex flex-col items-center gap-4">
         {cardImages.map((image, index) => (
           <div
             key={index}
-            className="relative flex justify-center items-center w-[70vw] h-[70vw] group"
+            className="relative flex justify-center items-center w-[50%] h-[40vw] group"
           >
             <a href={imageLinks[index]} target="_blank" rel="noopener noreferrer">
               <img

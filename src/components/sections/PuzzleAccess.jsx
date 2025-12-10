@@ -3,6 +3,10 @@
 import React, { useState } from "react";
 import "../../styles/puzzle-access.css";
 
+import img1 from "./game_pad_pixel.svg";
+import img2 from "./book_pixel.svg";
+import img3 from "./centipede_pixel.svg";
+
 // 아티팩트 메타 정보
 const ARTIFACTS = [
   {
@@ -11,7 +15,7 @@ const ARTIFACTS = [
     label: "GAME MODULE",
     title: "zzo가 가장 좋아하는 게임 컨트롤러",
     description: "밤새도록 레벨을 밀어버릴 때 사용하는 비밀 장비.",
-    svg: "/src/assets/svg/puzzle_game.svg",
+    svg: img1,
   },
   {
     id: "book",
@@ -19,7 +23,7 @@ const ARTIFACTS = [
     label: "BOOK CORE",
     title: "zzo의 사적인 세계가 담긴 책",
     description: "현실에서 로그아웃하고 새로운 서사를 흡수할 때 펼친다.",
-    svg: "/src/assets/svg/puzzle_book.svg",
+    svg: img2,
   },
   {
     id: "centipede",
@@ -27,7 +31,7 @@ const ARTIFACTS = [
     label: "CENTIPEDE SPECIMEN",
     title: "zzo가 이상할 정도로 좋아하는 지네",
     description: "완벽하게 쪼개진 관절과 움직임, 그리고 약간의 광기.",
-    svg: "../src/assets/svg/centipede_pixel.svg",
+    svg: img3,
   },
 ];
 
@@ -135,7 +139,7 @@ export default function PuzzleAccess({ onSolved }) {
           <span className="chip-label">PUZZLE ACCESS // zzo LOCK</span>
         </div>
         <div className="puzzle-chip-right font-mono-accent">
-          <span className="chip-tag">LEVEL 01</span>
+          <span className="chip-tag">LEVEL 02</span>
           <span className="chip-tag chip-tag--armed">
             {unlocked ? "STATUS: UNLOCKED" : "STATUS: SEALED"}
           </span>
