@@ -1,66 +1,97 @@
+// src/components/sections/PuzzleAccess.jsx
+
 import React, { useState } from "react";
+import "../../styles/puzzle-access.css";
 
-export default function PuzzleAccess() {
-  const [frags, setFrags] = useState([]);
-  const [msg, setMsg] = useState("");
-  const [open, setOpen] = useState(false);
-  const add = (s) => setFrags((p) => (p.includes(s) ? p : [...p, s]));
-  const bag = frags.length ? frags.join("-") : "—";
+/* 픽셀 SVG */
+import Pad from "../../assets/svg/game_pad_pixel.svg";
+import Book from "../../assets/svg/book_pixel.svg";
+import Centipede from "../../assets/svg/centipede_pixel.svg";
 
-  const onSubmit = (e) => {
+/* 각 아이템에 대응하는 힌트 */
+const HINT_MAP = {
+  Pad: "첫 번째 키는 B",
+  Book: "두 번째 키는 O",
+  Centipede: "마지막 키는 O",
+};
+
+export default function PuzzleAccess({ onUnlock }) {
+  const [scanned, setScanned] = useState([]);
+  const [input, setInput] = useState("");
+  const [unlocked, setUnlocked] = useState(false);
+
+  /* 드롭 시 처리 */
+  const onDrop = (e) => {
     e.preventDefault();
-    const v = new FormData(e.currentTarget).get("pass")?.toString().trim().toUpperCase();
-    if (v === "HACKHER") { setMsg("ACCESS GRANTED"); setOpen(true); }
-    else setMsg("ACCESS DENIED");
+    const item = e.dataTransfer.getData("text/item");
+    if (!item || scanned.includes(item)) return;
+
+    setScanned((prev) => [...prev, item]);
+  };
+
+  const onDrag = (e, item) => {
+    e.dataTransfer.setData("text/item", item);
+  };
+
+  /* 정답 검사 */
+  const checkAnswer = () => {
+    if (input.toLowerCase() === "boo") {
+      setUnlocked(true);
+      if (typeof onUnlock === "function") onUnlock();
+    }
   };
 
   return (
-    <section id="puzzle" className="min-h-svh px-6 py-16 flex flex-col justify-center gap-6">
-      <header>
-        <h2 className="text-2xl font-extrabold" style={{ color: "var(--neon-yellow)" }}>ACCESS NODE // 02</h2>
-        <p className="text-sky-300/70">오브젝트를 눌러 단서를 모으고 암호를 입력하세요.</p>
-      </header>
+    <section id="puzzle" className="puzzle-wrapper">
+      <h2 className="puzzle-title">SCAN & UNLOCK ACCESS</h2>
 
-      <div className="relative h-[46svh] min-h-[320px] overflow-hidden rounded-2xl glass shadow-[0_0_0_1px_rgba(255,255,255,.06)]">
-        {[
-          { s: "HA", x: "12%", y: "42%" },
-          { s: "CK", x: "46%", y: "28%" },
-          { s: "HER", x: "78%", y: "62%" },
-        ].map(({ s, x, y }) => (
-          <button
-            key={s}
-            onClick={() => add(s)}
-            style={{ left: x, top: y }}
-            className="absolute size-8 -translate-x-1/2 -translate-y-1/2 rounded-md border border-white/10 bg-white/5 text-[color:var(--neon-pink)] transition-transform hover:-translate-y-2 focus-visible:outline focus-visible:outline-2"
-            aria-label={`단서 ${s}`}
-          >
-            ▣
-          </button>
-        ))}
-        <div className="absolute right-2 bottom-2 rounded-full glass px-3 py-1 text-[12px] text-cyan-200">
-          단서: {bag}
+      {/* 아이템 영역 */}
+      <div className="puzzle-items">
+        <img draggable className="puzzle-item" src={Pad}
+          onDragStart={(e) => onDrag(e, "Pad")} />
+
+        <img draggable className="puzzle-item" src={Book}
+          onDragStart={(e) => onDrag(e, "Book")} />
+
+        <img draggable className="puzzle-item" src={Centipede}
+          onDragStart={(e) => onDrag(e, "Centipede")} />
+      </div>
+
+      {/* 스캔 영역 */}
+      <div className="puzzle-scan"
+        onDrop={onDrop}
+        onDragOver={(e) => e.preventDefault()}
+      >
+        <div className="scan-label">SCAN AREA</div>
+
+        {/* 스캔된 힌트 출력 */}
+        <div className="scan-hints">
+          {scanned.map((k) => (
+            <p key={k} className="scan-hint">{HINT_MAP[k]}</p>
+          ))}
         </div>
       </div>
 
-      <form onSubmit={onSubmit} className="flex flex-wrap items-center gap-3">
-        <label htmlFor="pass" className="text-slate-300/80 text-sm">암호</label>
+      {/* 정답 입력창: 3개 모두 스캔해야 활성화 */}
+      <div className="puzzle-input-area">
         <input
-          id="pass"
-          name="pass"
-          placeholder="단서를 조합해 입력"
-          className="min-w-[220px] flex-1 rounded-lg border border-white/10 bg-[#03070b] px-3 py-2 text-slate-100"
+          disabled={scanned.length !== 3}
+          className="puzzle-input"
+          placeholder="Enter key..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
-        <button className="rounded-xl px-4 py-2 font-bold" style={{ background: "var(--neon-green)", color: "#00110b" }}>
-          UNLOCK
+        <button
+          className="puzzle-submit"
+          disabled={scanned.length !== 3}
+          onClick={checkAnswer}
+        >
+          VERIFY
         </button>
-        <output className="min-w-[120px] text-slate-400">{msg}</output>
-      </form>
+      </div>
 
-      {open && (
-        <div className="mt-3 text-6xl font-black tracking-wider">
-          <span className="neon-text" style={{ color: "var(--neon-green)" }}>HACK</span>
-          <span className="neon-text" style={{ color: "var(--signal-red)" }}>HER</span>
-        </div>
+      {unlocked && (
+        <p className="puzzle-unlocked">ACCESS GRANTED — scroll to continue</p>
       )}
     </section>
   );

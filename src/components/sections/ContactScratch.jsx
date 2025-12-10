@@ -67,7 +67,7 @@ export default function ContactScratch() {
             <h3 className="text-3xl font-extrabold neon-text" style={{ color: "var(--neon-green)" }}>myoxko</h3>
             <p className="opacity-90">designer / coder / explorer</p>
             <p className="mt-2">
-              <a className="underline" href="mailto:hello@example.com">hello@example.com</a>
+              <a className="underline" href="mailto:meyrrill@gmail.com">meyrrill@gmail.com</a>
             </p>
             <p>@myoxko</p>
           </div>

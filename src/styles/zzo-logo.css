@@ -1,0 +1,44 @@
+/* zzo 시그니처 로고 공통 */
+
+.zzo-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.zzo-logo-text {
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #f97373;
+  text-shadow:
+    0 0 10px rgba(249, 115, 115, 0.9),
+    0 0 24px rgba(248, 113, 113, 0.8);
+}
+
+.zzo-logo-heart {
+  width: 32px;
+  height: 32px;
+  filter:
+    drop-shadow(0 0 12px rgba(248, 113, 113, 0.9))
+    drop-shadow(0 0 26px rgba(239, 68, 68, 0.8));
+}
+
+/* 크기 변형 옵션 */
+.zzo-logo--sm .zzo-logo-text {
+  font-size: 0.7rem;
+}
+.zzo-logo--sm .zzo-logo-heart {
+  width: 22px;
+  height: 22px;
+}
+
+.zzo-logo--md .zzo-logo-text {
+  font-size: 0.9rem;
+}
+.zzo-logo--lg .zzo-logo-text {
+  font-size: 1.2rem;
+}
+.zzo-logo--lg .zzo-logo-heart {
+  width: 40px;
+  height: 40px;
+}

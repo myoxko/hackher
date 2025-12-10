@@ -2,34 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 기본 배경/텍스트 */
-html, body, #root { height: 100%; }
-body {
-  @apply text-slate-100;
-  background: radial-gradient(1200px 800px at 70% -10%, #0d1520 0%, #070a0e 60%, #05070a 100%) fixed;
-}
-.reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s, transform .5s; }
-.reveal.is-visible { opacity: 1; transform: none; }
+/* ----------------------------------------------------
+   Base Fonts
+---------------------------------------------------- */
 
-/* Glass utilities */
-.glass{
-    background: color-mix(in oklab, var(--ink) 6%, transparent);
-    border: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
-    backdrop-filter: blur(12px) saturate(120%);
-    -webkit-backdrop-filter: blur(12px) saturate(120%);
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.03) inset,
-      0 20px 60px rgba(0,0,0,.35);
-  }
-  .glass-strong{
-    background: color-mix(in oklab, var(--ink) 10%, transparent);
-    border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
-    backdrop-filter: blur(18px) saturate(130%);
-  }
-  .neon-text { text-shadow: 0 0 10px color-mix(in oklab, var(--accent) 60%, transparent); }
-  
-  /* Typography: 임시 대체 (Media Sans 보유 시 @font-face로 갈아끼움) */
-  :root{ --font-grotesk: "Space Grotesk","Pretendard","Inter",system-ui,sans-serif; }
-  body{ font-family: var(--font-grotesk); }
-  h1,h2,h3,strong{ font-weight: 800; letter-spacing: .02em; }
-  
+:root {
+  --font-grotesk: "Space Grotesk", "Pretendard", "Inter", system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-grotesk);
+}
+
+/* 제목 계열 */
+h1,
+h2,
+h3,
+strong {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* ----------------------------------------------------
+   Typography Helpers
+---------------------------------------------------- */
+
+.font-m42 {
+  font-family: "M42", "Inconsolata", "Michroma", system-ui, monospace;
+}
+
+.font-mono-accent {
+  font-family: "Inconsolata", "Michroma", system-ui, monospace;
+  font-variant-ligatures: none;
+}
+
+/* Hero 터미널 카드 등장 애니메이션 */
+.hero-terminal-card {
+  transform: scale(0.9) translateY(16px);
+  opacity: 0;
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.6s ease-out;
+}
+
+.hero-terminal-card--visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Hero 터미널 출력 영역 전용 스크롤바 스타일 */
+.hero-terminal-output::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hero-terminal-output::-webkit-scrollbar-track {
+  background: transparent; /* 트랙 색 없음 */
+}
+
+.hero-terminal-output::-webkit-scrollbar-thumb {
+  background: #f97373;      /* 빨간색 바 */
+  border-radius: 999px;     /* border-radius 100 느낌 */
+}
+
+/* Firefox용 */
+.hero-terminal-output {
+  scrollbar-width: thin;
+  scrollbar-color: #f97373 transparent;
+}
+
+/* Hero 터미널 출력창 전용 스크롤바 스타일 */
+.hero-terminal-output {
+  scrollbar-width: thin;                /* 파이어폭스용 얇은 스크롤바 */
+  scrollbar-color: rgba(248, 113, 113, 0.9) transparent;
+}
+
+/* 크롬/엣지/사파리용 */
+.hero-terminal-output::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hero-terminal-output::-webkit-scrollbar-track {
+  background: transparent;              /* 스크롤 바 영역 색 없음 */
+}
+
+.hero-terminal-output::-webkit-scrollbar-thumb {
+  background: rgba(248, 113, 113, 0.9); /* 네온 레드 */
+  border-radius: 999px;                 /* 둥근 막대 */
+}
+
+
+/* 드래그 색상 변경 */
+::selection {
+  background: transparent;
+  color: yellow;
+}
+
+::-moz-selection {
+  background: transparent;
+  color: yellow;
+}

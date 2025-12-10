@@ -1,0 +1,24 @@
+<!-- src/assets/svg/zzo_hand_open.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 96" shape-rendering="crispEdges">
+  <!-- 손바닥 / 손가락 픽셀 실루엣 -->
+  <g fill="#f9fafb">
+    <!-- 검지/중지/약지/소지 -->
+    <rect x="20" y="8" width="8" height="28"/>
+    <rect x="30" y="4" width="8" height="32"/>
+    <rect x="40" y="6" width="8" height="30"/>
+    <rect x="50" y="10" width="8" height="26"/>
+
+    <!-- 손바닥 본체 -->
+    <rect x="18" y="32" width="40" height="30"/>
+
+    <!-- 엄지 -->
+    <rect x="10" y="36" width="8" height="20"/>
+    <rect x="12" y="48" width="10" height="16"/>
+  </g>
+
+  <!-- 테두리 살짝 어둡게 -->
+  <g fill="#e5e7eb">
+    <rect x="18" y="62" width="40" height="6"/>
+    <rect x="22" y="68" width="32" height="6"/>
+  </g>
+</svg>

@@ -1,0 +1,53 @@
+/* 공통 파티클 레이어 */
+
+.particle-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* 각 파티클 점 */
+.particle-dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(248, 113, 113, 0.95);
+  box-shadow: 0 0 6px rgba(248, 113, 113, 0.9);
+  border-radius: 1px;
+  animation: particleFloat 10s linear infinite;
+}
+
+/* 간단한 nth-child 배치 */
+.particle-dot:nth-child(1) { top: 10%; left: 12%; animation-duration: 9s; }
+.particle-dot:nth-child(2) { top: 30%; left: 80%; animation-duration: 11s; }
+.particle-dot:nth-child(3) { top: 70%; left: 20%; animation-duration: 12s; }
+.particle-dot:nth-child(4) { top: 50%; left: 50%; animation-duration: 8s; }
+.particle-dot:nth-child(5) { top: 15%; left: 65%; animation-duration: 13s; }
+.particle-dot:nth-child(6) { top: 40%; left: 30%; animation-duration: 10s; }
+.particle-dot:nth-child(7) { top: 60%; left: 75%; animation-duration: 12s; }
+.particle-dot:nth-child(8) { top: 80%; left: 40%; animation-duration: 9s; }
+.particle-dot:nth-child(9) { top: 25%; left: 45%; animation-duration: 14s; }
+.particle-dot:nth-child(10) { top: 5%; left: 35%; animation-duration: 10s; }
+.particle-dot:nth-child(11) { top: 88%; left: 15%; animation-duration: 13s; }
+.particle-dot:nth-child(12) { top: 72%; left: 90%; animation-duration: 11s; }
+.particle-dot:nth-child(13) { top: 35%; left: 5%; animation-duration: 12s; }
+.particle-dot:nth-child(14) { top: 55%; left: 95%; animation-duration: 10s; }
+.particle-dot:nth-child(15) { top: 45%; left: 60%; animation-duration: 9s; }
+.particle-dot:nth-child(16) { top: 12%; left: 90%; animation-duration: 14s; }
+.particle-dot:nth-child(17) { top: 78%; left: 55%; animation-duration: 11s; }
+.particle-dot:nth-child(18) { top: 32%; left: 25%; animation-duration: 10s; }
+.particle-dot:nth-child(19) { top: 65%; left: 5%; animation-duration: 12s; }
+.particle-dot:nth-child(20) { top: 20%; left: 72%; animation-duration: 9s; }
+
+@keyframes particleFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(20px, -40px, 0);
+    opacity: 0;
+  }
+}
