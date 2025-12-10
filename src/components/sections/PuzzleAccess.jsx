@@ -11,7 +11,7 @@ const ARTIFACTS = [
     label: "GAME MODULE",
     title: "zzo가 가장 좋아하는 게임 컨트롤러",
     description: "밤새도록 레벨을 밀어버릴 때 사용하는 비밀 장비.",
-    svg: "/src/assets/svg/puzzle_game.svg", // 나중에 실제 파일로 교체
+    svg: "/src/assets/svg/puzzle_game.svg",
   },
   {
     id: "book",
@@ -27,7 +27,7 @@ const ARTIFACTS = [
     label: "CENTIPEDE SPECIMEN",
     title: "zzo가 이상할 정도로 좋아하는 지네",
     description: "완벽하게 쪼개진 관절과 움직임, 그리고 약간의 광기.",
-    svg: "/src/assets/svg/puzzle_centipede.svg",
+    svg: "../src/assets/svg/centipede_pixel.svg",
   },
 ];
 

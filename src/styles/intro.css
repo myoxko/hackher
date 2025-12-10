@@ -2,12 +2,17 @@
 
 /* 인트로 전체 래퍼 */
 .intro-wrapper {
+
+
   position: fixed;
   inset: 0;
   z-index: 60;
   background:
     radial-gradient(circle at 20% -10%, #7f1d1d 0%, transparent 35%),
     radial-gradient(circle at 80% 120%, #020617 0%, #000 70%);
+
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
