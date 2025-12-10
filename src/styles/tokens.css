@@ -18,12 +18,11 @@
     --accent: var(--neon-green);
   }
   
-  @font-face {
-    font-family: "M42";
-    src: url("/fonts/M42.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-  }
+@font-face {
+  font-family: "M42";
+  src: url("/hackher/fonts/M42.ttf") format("truetype");
+}
+
 
   :root {
   --font-primary: "M42", "Inconsolata", "Michroma", monospace;

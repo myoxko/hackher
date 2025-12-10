@@ -27,8 +27,9 @@ strong {
    Typography Helpers
 ---------------------------------------------------- */
 
-.font-m42 {
-  font-family: "M42", "Inconsolata", "Michroma", system-ui, monospace;
+@font-face {
+  font-family: "M42";
+  src: url("/hackher/fonts/M42.ttf") format("truetype");
 }
 
 .font-mono-accent {

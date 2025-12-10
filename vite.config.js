@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/hackher/", // ★ 깃허브 페이지의 repo 이름
+  base: "/hackher/", // GitHub Pages repo name
 });
