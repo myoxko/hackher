@@ -8,7 +8,7 @@ import LoadingZzo from "./components/ui/LoadingZzo.jsx";
 import HeroTerminal from "./components/sections/HeroTerminal.jsx";
 import PuzzleAccess from "./components/sections/PuzzleAccess.jsx";
 import FeedAbout from "./components/sections/FeedAbout.jsx";
-import ProjectsExplorer from "./components/sections/ProjectsExplorer.jsx";
+// import ProjectsExplorer from "./components/sections/ProjectsExplorer.jsx";
 import ContactScratch from "./components/sections/ContactScratch.jsx";
 
 const PHASES = {
@@ -74,7 +74,7 @@ export default function App() {
         {puzzleSolved && (
           <>
             <FeedAbout />
-            <ProjectsExplorer />
+            {/* <ProjectsExplorer /> */}
             <ContactScratch />
             <footer className="py-8 text-center text-sky-300">
               © {new Date().getFullYear()} HACKHER
